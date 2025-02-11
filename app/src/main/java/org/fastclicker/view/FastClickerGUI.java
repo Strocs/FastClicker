@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  * FastClickerGUI
@@ -27,6 +28,9 @@ public class FastClickerGUI extends JFrame {
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setSize(250, 250);
     setLayout(new BorderLayout());
+
+    // Look and feel
+    setLookAndFeel();
 
     // Font
     Font customFont = new Font("Cambria", Font.PLAIN, 12);
@@ -83,5 +87,19 @@ public class FastClickerGUI extends JFrame {
 
   public void setTriggerKeyBtnText(String text) {
     triggerKeyBtn.setText(text);
+  }
+
+  private void setLookAndFeel() {
+    try {
+      UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+    } catch (UnsupportedLookAndFeelException e) {
+      e.printStackTrace();
+    } catch (IllegalAccessException e) {
+      e.printStackTrace();
+    } catch (InstantiationException e) {
+      e.printStackTrace();
+    } catch (ClassNotFoundException e) {
+      e.printStackTrace();
+    }
   }
 }
